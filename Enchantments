@@ -1,0 +1,308 @@
+def value(number):
+    return ("{:,}".format(number))
+
+def factorial(a):
+    fac = 1
+    for i in range(1, a + 1):
+        fac = fac * i
+    return fac
+
+def enchants(x):
+    if x == "Schaufel" or x == "Hacke" or x == "Spitzhacke":
+        enchants = [5, 4, 3, 1, 1]
+    if x == "Axt":
+        enchants = [5, 4, 15, 3, 1, 1]
+    if x == "Schwert":
+        enchants = [15, 3, 3, 3, 2, 2, 1, 1]
+    if x == "Helm" or x == "Schildkrötenpanzer":
+        enchants = [16, 3, 3, 3, 1, 1, 1, 1]
+    if x == "Brustplatte":
+        enchants = [16, 3, 3, 1, 1, 1]
+    if x == "Hose":
+        enchants = [16, 3, 3, 3, 1, 1, 1]
+    if x == "Stiefel":
+        enchants = [16, 5, 4, 3, 3, 3, 1, 1, 1]
+    if x == "Bogen":
+        enchants = [2, 5, 3, 2, 1, 1]
+    if x == "Armbrust":
+        enchants = [5, 3, 3, 1, 1]
+    if x == "Angel":
+        enchants = [3, 3, 3, 1, 1]
+    if x == "Schere":
+        enchants = [5, 3, 1, 1]
+    if x == "Schild" or x == "Elytra" or x == "Feuerzeug" or x == "Karottenrute" or x == "Wirrpilzrute":
+        enchants = [3, 1, 1]
+    if x == "Kompass":
+        enchants = [1]
+    return enchants
+
+def enchantments1(E1):
+    enchantments = enchants(item)
+    total = factorial(E1) * sum(enchantments)
+    return total
+
+def enchantments2(E2):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken = 0
+    for level1 in range(len(enchantments) - 1):
+        taken += enchantments[level1]
+        levels_total = sum(enchantments) - taken
+        E += enchantments[level1] * levels_total
+    total = factorial(E2) * E
+    return total  
+
+def enchantments3(E3):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken_level1 = 0
+    taken_level2 = 0
+    sub_levels2 = 0
+    for level1 in range(len(enchantments) - 2):
+        taken_level1 += enchantments[level1]
+        for level2 in range(level1 + 1, len(enchantments) - 1):
+            taken_level2 += enchantments[level2]
+            levels_total = levels_total - (taken_level1 + taken_level2)
+            sub_levels2 = enchantments[level2] * levels_total
+            E += enchantments[level1] * sub_levels2
+            levels_total = sum(enchantments)
+        taken_level2 = 0
+    total = factorial(E3) * E
+    return total
+        
+def enchantments4(E4):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken_level1 = 0
+    taken_level2 = 0
+    taken_level3 = 0
+    sub_levels3 = 0
+    for level1 in range(len(enchantments) - 3):
+        taken_level1 += enchantments[level1]
+        for level2 in range(level1 + 1, len(enchantments) - 2):
+            taken_level2 += enchantments[level2]
+            for level3 in range(level2 + 1, len(enchantments) - 1):
+                taken_level3 += enchantments[level3]
+                levels_total = levels_total - (taken_level1 + taken_level2 + taken_level3)
+                sub_levels3 = enchantments[level2] * enchantments[level3] * levels_total
+                E += enchantments[level1] * sub_levels3
+                levels_total = sum(enchantments)
+            taken_level3 = 0
+        taken_level2 = 0
+    total = factorial(E4) * E
+    return total
+
+def enchantments5(E5):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken_level1 = 0
+    taken_level2 = 0
+    taken_level3 = 0
+    taken_level4 = 0
+    sub_levels4 = 0
+    for level1 in range(len(enchantments) - 4):
+        taken_level1 += enchantments[level1]
+        for level2 in range(level1 + 1, len(enchantments) - 3):
+            taken_level2 += enchantments[level2]
+            for level3 in range(level2 + 1, len(enchantments) - 2):
+                taken_level3 += enchantments[level3]
+                for level4 in range(level3 + 1, len(enchantments) - 1):
+                    taken_level4 += enchantments[level4]
+                    levels_total = levels_total - (taken_level1 + taken_level2 + taken_level3 + taken_level4)
+                    sub_levels4 = enchantments[level2] * enchantments[level3] * enchantments[level4] * levels_total
+                    E += enchantments[level1] * sub_levels4
+                    levels_total = sum(enchantments)
+                taken_level4 = 0
+            taken_level3 = 0
+        taken_level2 = 0
+    total = factorial(E5) * E
+    return total
+
+def enchantments6(E6):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken_level1 = 0
+    taken_level2 = 0
+    taken_level3 = 0
+    taken_level4 = 0
+    taken_level5 = 0
+    sub_levels5 = 0
+    for level1 in range(len(enchantments) - 5):
+        taken_level1 += enchantments[level1]
+        for level2 in range(level1 + 1, len(enchantments) - 4):
+            taken_level2 += enchantments[level2]
+            for level3 in range(level2 + 1, len(enchantments) - 3):
+                taken_level3 += enchantments[level3]
+                for level4 in range(level3 + 1, len(enchantments) - 2):
+                    taken_level4 += enchantments[level4]
+                    for level5 in range(level4 + 1, len(enchantments) - 1):
+                        taken_level5 += enchantments[level5]
+                        levels_total = levels_total - (taken_level1 + taken_level2 + taken_level3 + taken_level4 + taken_level5)
+                        sub_levels5 = enchantments[level2] * enchantments[level3] * enchantments[level4] * enchantments[level5] * levels_total
+                        E += enchantments[level1] * sub_levels5
+                        levels_total = sum(enchantments)
+                    taken_level5 = 0
+                taken_level4 = 0
+            taken_level3 = 0
+        taken_level2 = 0
+    total = factorial(E6) * E
+    return total 
+
+def enchantments7(E7):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken_level1 = 0
+    taken_level2 = 0
+    taken_level3 = 0
+    taken_level4 = 0
+    taken_level5 = 0
+    taken_level6 = 0
+    sub_levels6 = 0
+    for level1 in range(len(enchantments) - 6):
+        taken_level1 += enchantments[level1]
+        for level2 in range(level1 + 1, len(enchantments) - 5):
+            taken_level2 += enchantments[level2]
+            for level3 in range(level2 + 1, len(enchantments) - 4):
+                taken_level3 += enchantments[level3]
+                for level4 in range(level3 + 1, len(enchantments) - 3):
+                    taken_level4 += enchantments[level4]
+                    for level5 in range(level4 + 1, len(enchantments) - 2):
+                        taken_level5 += enchantments[level5]
+                        for level6 in range(level5 + 1, len(enchantments) - 1):
+                            taken_level6 += enchantments[level6]
+                            levels_total = levels_total - (taken_level1 + taken_level2 + taken_level3 + taken_level4 + taken_level5 + taken_level6)
+                            sub_levels6 = enchantments[level2] * enchantments[level3] * enchantments[level4] * enchantments[level5] * enchantments[level6] * levels_total
+                            E += enchantments[level1] * sub_levels6
+                            levels_total = sum(enchantments)
+                        taken_level6 = 0
+                    taken_level5 = 0
+                taken_level4 = 0
+            taken_level3 = 0
+        taken_level2 = 0
+    total = factorial(E7) * E
+    return total
+
+def enchantments8(E8):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken_level1 = 0
+    taken_level2 = 0
+    taken_level3 = 0
+    taken_level4 = 0
+    taken_level5 = 0
+    taken_level6 = 0
+    taken_level7 = 0
+    sub_levels7 = 0
+    for level1 in range(len(enchantments) - 7):
+        taken_level1 += enchantments[level1]
+        for level2 in range(level1 + 1, len(enchantments) - 6):
+            taken_level2 += enchantments[level2]
+            for level3 in range(level2 + 1, len(enchantments) - 5):
+                taken_level3 += enchantments[level3]
+                for level4 in range(level3 + 1, len(enchantments) - 4):
+                    taken_level4 += enchantments[level4]
+                    for level5 in range(level4 + 1, len(enchantments) - 3):
+                        taken_level5 += enchantments[level5]
+                        for level6 in range(level5 + 1, len(enchantments) - 2):
+                            taken_level6 += enchantments[level6]
+                            for level7 in range(level6 + 1, len(enchantments) - 1):
+                                taken_level7 += enchantments[level7]
+                                levels_total = levels_total - (taken_level1 + taken_level2 + taken_level3 + taken_level4 + taken_level5 + taken_level6 + taken_level7)
+                                sub_levels7 = enchantments[level2] * enchantments[level3] * enchantments[level4] * enchantments[level5] * enchantments[level6] * enchantments[level7] * levels_total
+                                E += enchantments[level1] * sub_levels7
+                                levels_total = sum(enchantments)
+                            taken_level7 = 0
+                        taken_level6 = 0
+                    taken_level5 = 0
+                taken_level4 = 0
+            taken_level3 = 0
+        taken_level2 = 0
+    total = factorial(E8) * E
+    return total 
+
+def enchantments9(E9):
+    enchantments = enchants(item)
+    levels_total = sum(enchantments)
+    E = 0
+    taken_level1 = 0
+    taken_level2 = 0
+    taken_level3 = 0
+    taken_level4 = 0
+    taken_level5 = 0
+    taken_level6 = 0
+    taken_level7 = 0
+    taken_level8 = 0
+    sub_levels8 = 0
+    for level1 in range(len(enchantments) - 8):
+        taken_level1 += enchantments[level1]
+        for level2 in range(level1 + 1, len(enchantments) - 7):
+            taken_level2 += enchantments[level2]
+            for level3 in range(level2 + 1, len(enchantments) - 6):
+                taken_level3 += enchantments[level3]
+                for level4 in range(level3 + 1, len(enchantments) - 5):
+                    taken_level4 += enchantments[level4]
+                    for level5 in range(level4 + 1, len(enchantments) - 4):
+                        taken_level5 += enchantments[level5]
+                        for level6 in range(level5 + 1, len(enchantments) - 3):
+                            taken_level6 += enchantments[level6]
+                            for level7 in range(level6 + 1, len(enchantments) - 2):
+                                taken_level7 += enchantments[level7]
+                                for level8 in range(level7 + 1, len(enchantments) - 1):
+                                    taken_level8 += enchantments[level8]
+                                    levels_total = levels_total - (taken_level1 + taken_level2 + taken_level3 + taken_level4 + taken_level5 + taken_level6 + taken_level7 + taken_level8)
+                                    sub_levels8 = enchantments[level2] * enchantments[level3] * enchantments[level4] * enchantments[level5] * enchantments[level6] * enchantments[level7] * enchantments[level8] * levels_total
+                                    E += enchantments[level1] * sub_levels8
+                                    levels_total = sum(enchantments)
+                                taken_level8 = 0
+                            taken_level7 = 0
+                        taken_level6 = 0
+                    taken_level5 = 0
+                taken_level4 = 0
+            taken_level3 = 0
+        taken_level2 = 0
+    total = factorial(E9) * E
+    return total     
+
+item = input("\nItem: ")
+
+def total_enchantments():
+    total = 0
+    enchantments = enchants(item)
+    for n in range(1, len(enchantments) + 1):
+        if n == 1:
+            print(f"\nE{n} = {value(enchantments1(n))}")
+            total += enchantments1(n)
+        if n == 2:
+            print(f"E{n} = {value(enchantments2(n))}")
+            total += enchantments2(n)
+        if n == 3:
+            print(f"E{n} = {value(enchantments3(n))}")
+            total += enchantments3(n)
+        if n == 4:
+            print(f"E{n} = {value(enchantments4(n))}")
+            total += enchantments4(n)
+        if n == 5:
+            print(f"E{n} = {value(enchantments5(n))}")
+            total += enchantments5(n)
+        if n == 6:
+            print(f"E{n} = {value(enchantments6(n))}")
+            total += enchantments6(n)
+        if n == 7:
+            print(f"E{n} = {value(enchantments7(n))}")
+            total += enchantments7(n)
+        if n == 8:
+            print(f"E{n} = {value(enchantments8(n))}")
+            total += enchantments8(n)
+        if n == 9:
+            print(f"E{n} = {value(enchantments9(n))}")
+            total += enchantments9(n)
+    print(f"\nGesamtanzahl der möglichen Enchantments: {value(total)}\n")
+
+total_enchantments()
