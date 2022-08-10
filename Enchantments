@@ -1,12 +1,15 @@
+#Zahlenformatierung
 def value(number):
     return ("{:,}".format(number))
 
+#Berechnung der Fakultät
 def factorial(a):
     fac = 1
     for i in range(1, a + 1):
         fac = fac * i
     return fac
 
+#Auflistung der Item Enchantments
 def enchants(x):
     if x == "Schaufel" or x == "Hacke" or x == "Spitzhacke":
         enchants = [5, 4, 3, 1, 1]
@@ -36,11 +39,13 @@ def enchants(x):
         enchants = [1]
     return enchants
 
+#Möglichkeiten für 1 Enchantment
 def enchantments1(E1):
     enchantments = enchants(item)
     total = factorial(E1) * sum(enchantments)
     return total
 
+#Möglichkeiten für 2 Enchantments
 def enchantments2(E2):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
@@ -53,6 +58,7 @@ def enchantments2(E2):
     total = factorial(E2) * E
     return total  
 
+#Möglichkeiten für 3 Enchantments
 def enchantments3(E3):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
@@ -71,7 +77,8 @@ def enchantments3(E3):
         taken_level2 = 0
     total = factorial(E3) * E
     return total
-        
+
+#Möglichkeiten für 4 Enchantments
 def enchantments4(E4):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
@@ -95,6 +102,7 @@ def enchantments4(E4):
     total = factorial(E4) * E
     return total
 
+#Möglichkeiten für 5 Enchantments
 def enchantments5(E5):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
@@ -122,6 +130,7 @@ def enchantments5(E5):
     total = factorial(E5) * E
     return total
 
+#Möglichkeiten für 6 Enchantments
 def enchantments6(E6):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
@@ -153,6 +162,7 @@ def enchantments6(E6):
     total = factorial(E6) * E
     return total 
 
+#Möglichkeiten für 7 Enchantments
 def enchantments7(E7):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
@@ -188,6 +198,7 @@ def enchantments7(E7):
     total = factorial(E7) * E
     return total
 
+#Möglichkeiten für 8 Enchantments
 def enchantments8(E8):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
@@ -227,6 +238,7 @@ def enchantments8(E8):
     total = factorial(E8) * E
     return total 
 
+#Möglichkeiten für 9 Enchantments
 def enchantments9(E9):
     enchantments = enchants(item)
     levels_total = sum(enchantments)
